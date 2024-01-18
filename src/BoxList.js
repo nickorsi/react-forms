@@ -11,16 +11,19 @@ import Box from './Box';
  *
  * State:
  * -Boxes: Array of objects containing height, width, backgroundColor
- * [{height, width, backgroundColor}]
+ * [{height, width, color, id}]
+ *
+ * App -> BoxList -> NewBoxForm & Box
  */
 
 function BoxList () {
   const [boxes, setBoxes] = useState([]);
 
   /**
-   * createBox defined at parent level to be passed down through child
+   * createBox defined at parent level to be pass down through child
    * components, updates array with new box.
-   * Takes in
+   * Takes in box object which comes from the form data
+   * {height, width, color}
    */
 
   // {height, width, color}
@@ -34,6 +37,8 @@ function BoxList () {
 
   /**
    * deleteBox deletes box from the boxlist
+   * Takes in id associated with the box to delete
+   * Updates the boxes state, filtering out the object with the passed in id.
    */
   function deleteBox(id){
     setBoxes(currBoxes =>
@@ -42,8 +47,8 @@ function BoxList () {
   }
 
   /**
-   * renderBoxes iterates through boxes and invokes the Box component passing
-   * in the current state.
+   * renderBoxes iterates through boxes state and invokes the Box component
+   * for each box held in state, passing in the height, width, color, and id.
    *
    */
 

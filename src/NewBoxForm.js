@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 
 /**
- * NewBoxForm is a a form with state formData preserving the data in the form
+ * NewBoxForm is a a form with state boxFormData preserving the data in the form
  * fields. The form asks for height, width, and background color. Upon form
- * submission, the data is gathered and a new box is created.
+ * submission, the data is gathered and a new box is created. Takes in a callback
+ * as a prop to assign the function to invoke on form submission.
  *
  * Props:
- * -createBox()
+ * -createBox -> callback function to create a box on form submit
  *
  * State:
  * -formData -> an object of the form fields {height, width, color}
  *
- * Box -> NewBoxForm
+ * BoxList -> NewBoxForm
 */
 
 function NewBoxForm ({createBox}) {
@@ -23,8 +24,7 @@ function NewBoxForm ({createBox}) {
 
   const [boxFormData, setBoxFormData] = useState(initialState);
 
-  /** Send {height, width, color} to parent
-   * & clear form
+  /** handleSubmit creates new box & clears form data
    */
   function handleSubmit(evt){
     evt.preventDefault();
@@ -32,7 +32,7 @@ function NewBoxForm ({createBox}) {
     setBoxFormData(initialState);
   }
 
-  /** Update local state with current state of input element */
+  /** handleChange updates local state with current value of input element */
   function handleChange(evt){
     const {name, value} = evt.target;
     setBoxFormData(fData => ({

@@ -4,9 +4,15 @@ import React from 'react';
  * background color, width, and height based on the props passed to it.
  *
  * Props:
- * -height: Number
- * -width: Number
+ * -height: Number as string
+ * -width: Number as string
  * -color: String
+ * -id: String
+ *
+ * State:
+ * -None
+ *
+ * BoxList -> Box
 */
 
 function Box ({height, width, color, id}) {
