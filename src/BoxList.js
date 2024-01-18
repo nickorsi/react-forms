@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import {v4 as uuid } from 'uuid';
+import NewBoxForm from './NewBoxForm';
+import Box from './Box';
+
 /**
  * BoxList compoenent redners Box and NewBoxForm componenets
  *
@@ -19,10 +22,21 @@ function BoxList () {
    * components, updates array with new box.
    * Takes in
    */
-  function createBox({height, width, color}) {
-    setBoxes((currBoxes) => {
-      [...currBoxes, {height, width, color, id: uuid()}];
-    })
+
+  // {height, width, color}
+  function createBox(box) {
+    let newBox = {...box, id: uuid()}
+    setBoxes((boxes) =>
+      [...boxes, newBox]
+    )
+  }
+
+
+  /**
+   * deleteBox deletes box from the boxlist
+   */
+  function deleteBox(){
+    // ...
   }
 
   /**
@@ -35,12 +49,16 @@ function BoxList () {
     return (
       <div>
         {boxes.map((box) => (
-          <Box
-            height={box.height}
-            width={box.width}
-            color={box.color}
-            id={box.id}
-          />
+          <div>
+            <Box
+              height={box.height}
+              width={box.width}
+              color={box.color}
+              id={box.id}
+              key={box.id}
+            />
+            <button onClick={deleteBox}> Remove the Box !</button>
+          </div>
         ))}
       </div>
     )
@@ -48,8 +66,10 @@ function BoxList () {
 
   return (
     <div className="BoxList">
-      <NewBoxForm />
+      <NewBoxForm createBox={createBox} />
       {renderBoxes()}
     </div>
   )
 }
+
+export default BoxList;
