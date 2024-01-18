@@ -25,6 +25,10 @@ function BoxList() {
    * Takes in box object which comes from the form data
    * {height, width, color}
    */
+  //TODO: Remember this function doesn't HAVE to recieve data from a form, it
+  //could come from anywhere! This component really only cares about WHAT it
+  //recieves, not WHERE it recieves it from! So good job naming the parameter
+  //as box, and not something like boxFormData!
 
   // {height, width, color}
   function createBox(box) {
