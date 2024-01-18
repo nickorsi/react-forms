@@ -51,13 +51,12 @@ function BoxList () {
     return (
       <div>
         {boxes.map((box) => (
-          <div>
+          <div  key={box.id}>
             <Box
               height={box.height}
               width={box.width}
               color={box.color}
               id={box.id}
-              key={box.id}
             />
             <button onClick={()=>deleteBox(box.id)}> Remove the Box!</button>
           </div>

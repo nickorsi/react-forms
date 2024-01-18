@@ -51,6 +51,7 @@ function NewBoxForm ({createBox}) {
         type='number'
         value={boxFormData.height}
         onChange={handleChange}
+        required
       />
 
       <label htmlFor="box-form-width">Width: </label>
@@ -60,6 +61,7 @@ function NewBoxForm ({createBox}) {
           type='number'
           value={boxFormData.width}
           onChange={handleChange}
+          required
         />
 
       <label htmlFor="box-form-color">Color: </label>
@@ -69,6 +71,7 @@ function NewBoxForm ({createBox}) {
           type='text'
           value={boxFormData.color}
           onChange={handleChange}
+          required
         />
 
       <button>Add a new box!</button>
