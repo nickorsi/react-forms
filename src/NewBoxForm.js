@@ -49,7 +49,7 @@ function NewBoxForm ({createBox}) {
         id="box-form-height"
         name="height"
         type='number'
-        value={boxFormData.name}
+        value={boxFormData.height}
         onChange={handleChange}
       />
 
@@ -58,7 +58,7 @@ function NewBoxForm ({createBox}) {
           id="box-form-width"
           name="width"
           type='number'
-          value={boxFormData.name}
+          value={boxFormData.width}
           onChange={handleChange}
         />
 
@@ -67,7 +67,7 @@ function NewBoxForm ({createBox}) {
           id="box-form-color"
           name="color"
           type='text'
-          value={boxFormData.name}
+          value={boxFormData.color}
           onChange={handleChange}
         />
 

@@ -16,7 +16,7 @@ function Box ({height, width, color, id}) {
     backgroundColor: color,
   }
 
-  return(<div id ={id} style={boxStyle}>THIS IS THE BOX</div>)
+  return(<div id ={id} style={boxStyle}></div>)
 }
 
 export default Box;

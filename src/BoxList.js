@@ -35,8 +35,10 @@ function BoxList () {
   /**
    * deleteBox deletes box from the boxlist
    */
-  function deleteBox(){
-    // ...
+  function deleteBox(id){
+    setBoxes(currBoxes =>
+      currBoxes.filter((box) => box.id !== id)
+    )
   }
 
   /**
@@ -57,7 +59,7 @@ function BoxList () {
               id={box.id}
               key={box.id}
             />
-            <button onClick={deleteBox}> Remove the Box !</button>
+            <button onClick={()=>deleteBox(box.id)}> Remove the Box!</button>
           </div>
         ))}
       </div>
