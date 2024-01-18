@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import {v4 as uuid } from 'uuid';
+import { v4 as uuid } from 'uuid';
 import NewBoxForm from './NewBoxForm';
 import Box from './Box';
 
 /**
- * BoxList compoenent redners Box and NewBoxForm componenets
+ * BoxList compoenent redners Box and NewBoxForm components
  *
  * Prop:
  * -None
  *
  * State:
- * -Boxes: Array of objects containing height, width, backgroundColor
+ * -Boxes: Array of objects containing height, width, background color, and id
  * [{height, width, color, id}]
  *
  * App -> BoxList -> NewBoxForm & Box
  */
 
-function BoxList () {
+function BoxList() {
   const [boxes, setBoxes] = useState([]);
 
   /**
@@ -28,10 +28,10 @@ function BoxList () {
 
   // {height, width, color}
   function createBox(box) {
-    let newBox = {...box, id: uuid()}
+    let newBox = { ...box, id: uuid() };
     setBoxes((boxes) =>
       [...boxes, newBox]
-    )
+    );
   }
 
 
@@ -40,10 +40,10 @@ function BoxList () {
    * Takes in id associated with the box to delete
    * Updates the boxes state, filtering out the object with the passed in id.
    */
-  function deleteBox(id){
+  function deleteBox(id) {
     setBoxes(currBoxes =>
       currBoxes.filter((box) => box.id !== id)
-    )
+    );
   }
 
   /**
@@ -56,18 +56,18 @@ function BoxList () {
     return (
       <div>
         {boxes.map((box) => (
-          <div  key={box.id}>
+          <div key={box.id}>
             <Box
               height={box.height}
               width={box.width}
               color={box.color}
               id={box.id}
             />
-            <button onClick={()=>deleteBox(box.id)}> Remove the Box!</button>
+            <button onClick={() => deleteBox(box.id)}> Remove the Box!</button>
           </div>
         ))}
       </div>
-    )
+    );
   }
 
   return (
@@ -75,7 +75,7 @@ function BoxList () {
       <NewBoxForm createBox={createBox} />
       {renderBoxes()}
     </div>
-  )
+  );
 }
 
 export default BoxList;

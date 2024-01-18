@@ -15,26 +15,26 @@ import React, { useState } from 'react';
  * BoxList -> NewBoxForm
 */
 
-function NewBoxForm ({createBox}) {
+function NewBoxForm({ createBox }) {
   const initialState = {
     height: '',
     width: '',
     color: ''
-  }
+  };
 
   const [boxFormData, setBoxFormData] = useState(initialState);
 
   /** handleSubmit creates new box & clears form data
    */
-  function handleSubmit(evt){
+  function handleSubmit(evt) {
     evt.preventDefault();
-    createBox(boxFormData)
+    createBox(boxFormData);
     setBoxFormData(initialState);
   }
 
   /** handleChange updates local state with current value of input element */
-  function handleChange(evt){
-    const {name, value} = evt.target;
+  function handleChange(evt) {
+    const { name, value } = evt.target;
     setBoxFormData(fData => ({
       ...fData,
       [name]: value,
@@ -46,6 +46,7 @@ function NewBoxForm ({createBox}) {
     <form onSubmit={handleSubmit}>
       <label htmlFor="box-form-height">Height: </label>
       <input
+        //TODO: Make ID similar to the component name NewBoxForm-height
         id="box-form-height"
         name="height"
         type='number'
@@ -55,24 +56,24 @@ function NewBoxForm ({createBox}) {
       />
 
       <label htmlFor="box-form-width">Width: </label>
-        <input
-          id="box-form-width"
-          name="width"
-          type='number'
-          value={boxFormData.width}
-          onChange={handleChange}
-          required
-        />
+      <input
+        id="box-form-width"
+        name="width"
+        type='number'
+        value={boxFormData.width}
+        onChange={handleChange}
+        required
+      />
 
       <label htmlFor="box-form-color">Color: </label>
-        <input
-          id="box-form-color"
-          name="color"
-          type='text'
-          value={boxFormData.color}
-          onChange={handleChange}
-          required
-        />
+      <input
+        id="box-form-color"
+        name="color"
+        type='text'
+        value={boxFormData.color}
+        onChange={handleChange}
+        required
+      />
 
       <button>Add a new box!</button>
     </form>
